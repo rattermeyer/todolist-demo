@@ -17,6 +17,75 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+    <profiles>
+        <profile>
+            <id>jenkinsci-version</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>parse-version</id>
+                                <goals>
+                                    <goal>parse-version</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>versions-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>setnewversion</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>set</goal>
+                                </goals>
+                                <configuration>
+                                    <generateBackupPoms>false</generateBackupPoms>
+                                    <newVersion>
+                                        <!--
+                                        ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}${story-tag}${env.BUILD_NUMBER}-${env.SVN_REVISION}
+                                        -->
+                                        ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}
+                                    </newVersion>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Write a properties file including the current version number -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <phase>validate</phase>
+                                <configuration>
+                                    <tasks>
+                                        <mkdir dir="${project.basedir}/target"/>
+                                        <!--
+                                        <property name="newVersion" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}${story-tag}${env.BUILD_NUMBER}-${env.SVN_REVISION}"/>
+                                                  -->
+                                        <property name="newVersion" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}"/>
+                                        <echo
+                                                message="Writing project Version into ${project.basedir}/target/projectversion.properties: ${newVersion}"/>
+                                        <echo file="${project.basedir}/target/projectversion.properties"
+                                              message="projectversion=${newVersion}"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <!-- Package as an executable jar -->
     <build>
         <plugins>
