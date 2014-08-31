@@ -8,10 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 
 /**
- * User: Richard Attermeyer
- * Date: 31.08.14
- * Time: 20:58
- *
+ * Represents the Spring-Boot Application Main class.
  * @author Richard Attermeyer
  */
 @Import(RepositoryRestMvcConfiguration.class)
@@ -19,6 +16,12 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @EnableJpaRepositories
 @Configuration
 public class Application {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }

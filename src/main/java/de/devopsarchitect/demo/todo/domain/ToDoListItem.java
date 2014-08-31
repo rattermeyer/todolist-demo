@@ -1,24 +1,29 @@
 package de.devopsarchitect.demo.todo.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
 
 /**
- * User: Richard Attermeyer
- * Date: 31.08.14
- * Time: 20:56
- *
+ * Represents a single entry in a todo list.
  * @author Richard Attermeyer
  */
 @Embeddable
 public class ToDoListItem {
     private String description;
 
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets description.
+     *
+     * @param description the description
+     */
     public void setDescription(String description) {
         this.description = description;
     }

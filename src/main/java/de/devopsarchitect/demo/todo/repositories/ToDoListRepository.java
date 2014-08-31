@@ -8,13 +8,16 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 /**
- * User: Richard Attermeyer
- * Date: 31.08.14
- * Time: 21:01
- *
+ * ToDoListRepository to interact with ToDoList entities.
  * @author Richard Attermeyer
  */
 @RepositoryRestResource(path = "todolist")
-public interface ToDoListRepository extends PagingAndSortingRepository<ToDoList, Long>{
+public interface ToDoListRepository extends PagingAndSortingRepository<ToDoList, Long> {
+    /**
+     * Find by name.
+     *
+     * @param name the name
+     * @return the list
+     */
     List<ToDoList> findByName(@Param("name") String name);
 }

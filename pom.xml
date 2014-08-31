@@ -72,7 +72,8 @@
                                         <!--
                                         <property name="newVersion" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}${story-tag}${env.BUILD_NUMBER}-${env.SVN_REVISION}"/>
                                                   -->
-                                        <property name="newVersion" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}"/>
+                                        <property name="newVersion"
+                                                  value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}"/>
                                         <echo
                                                 message="Writing project Version into ${project.basedir}/target/projectversion.properties: ${newVersion}"/>
                                         <echo file="${project.basedir}/target/projectversion.properties"
@@ -98,6 +99,24 @@
                         -Dserver.port=18080
                     </jvmArguments>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.12.1</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <configLocation>checkstyle/devopsarchitect_checks.xml</configLocation>
+                            <logViolationsToConsole>true</logViolationsToConsole>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
