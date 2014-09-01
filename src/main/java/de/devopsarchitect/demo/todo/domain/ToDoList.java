@@ -1,11 +1,13 @@
 package de.devopsarchitect.demo.todo.domain;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -19,6 +21,8 @@ public class ToDoList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
+    @Column(length = 50)
     private String name;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -58,5 +62,19 @@ public class ToDoList {
      */
     public void setItems(List<ToDoListItem> items) {
         this.items = items;
+    }
+
+    /**
+     * Factory method to create a to do list.
+     *
+     * @param name  name of the to do list
+     * @param items items of the to do list
+     * @return the constructed to do list.
+     */
+    public static ToDoList toDoList(String name, List<ToDoListItem> items) {
+        ToDoList toDoList = new ToDoList();
+        toDoList.setName(name);
+        toDoList.setItems(items);
+        return toDoList;
     }
 }
