@@ -22,7 +22,7 @@
             <id>demo-repo-candidates</id>
             <name>Demo Repository for Candidate Builds</name>
             <!-- repos is the name undeer which the jenkins server is linked to the repos container -->
-            <url>http://repos:8081/nexus/candidates</url>
+            <url>http://repos:8081/nexus/content/repositories/candidates</url>
         </repository>
     </distributionManagement>
     
