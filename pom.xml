@@ -17,6 +17,15 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>demo-repo-candidates</id>
+            <name>Demo Repository for Candidate Builds</id>
+            <!-- repos is the name undeer which the jenkins server is linked to the repos container -->
+            <url>http://repos:8081/nexus/candidates</url>
+        </repository>
+    </distributionManagement>
+    
     <profiles>
         <profile>
             <id>jenkinsci-version</id>
