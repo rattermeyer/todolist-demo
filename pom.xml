@@ -59,7 +59,7 @@
                                         <!--
                                         ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}${story-tag}${env.BUILD_NUMBER}-${env.SVN_REVISION}
                                         -->
-                                        ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${env.GIT_COMMIT}
+                                        ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${env.BUILD_NUMBER}-${env.GIT_COMMIT}
                                     </newVersion>
                                 </configuration>
                             </execution>
@@ -82,7 +82,7 @@
                                         <property name="newVersion" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}${story-tag}${env.BUILD_NUMBER}-${env.SVN_REVISION}"/>
                                                   -->
                                         <property name="newVersion"
-                                                  value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}"/>
+                                                  value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${env.BUILD_NUMBER}-${env.GIT_COMMIT}"/>
                                         <echo
                                                 message="Writing project Version into ${project.basedir}/target/projectversion.properties: ${newVersion}"/>
                                         <echo file="${project.basedir}/target/projectversion.properties"
