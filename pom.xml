@@ -59,7 +59,7 @@
                                         <!--
                                         ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}${story-tag}${env.BUILD_NUMBER}-${env.SVN_REVISION}
                                         -->
-                                        ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}
+                                        ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-{env.BUILD_NUMBER}-${env.GIT_COMMIT}
                                     </newVersion>
                                 </configuration>
                             </execution>
