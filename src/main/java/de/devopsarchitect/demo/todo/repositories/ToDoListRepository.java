@@ -20,4 +20,11 @@ public interface ToDoListRepository extends PagingAndSortingRepository<ToDoList,
      * @return the list
      */
     List<ToDoList> findByName(@Param("name") String name);
+
+    /**
+     * Find by description
+     * @param description description of the todo-list
+     * @return to do lists
+     */
+    List<ToDoList> findByDescription(@Param("description") String description);
 }

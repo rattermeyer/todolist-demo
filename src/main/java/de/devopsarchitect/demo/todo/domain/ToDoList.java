@@ -25,6 +25,8 @@ public class ToDoList {
     @Column(length = 50)
     private String name;
 
+    private String description;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<ToDoListItem> items;
 
@@ -62,6 +64,24 @@ public class ToDoList {
      */
     public void setItems(List<ToDoListItem> items) {
         this.items = items;
+    }
+
+    /**
+     * Getter for property 'description'.
+     *
+     * @return Value for property 'description'.
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Setter for property 'description'.
+     *
+     * @param description Value to set for property 'description'.
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**
