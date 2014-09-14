@@ -22,7 +22,7 @@ public interface ToDoListRepository extends PagingAndSortingRepository<ToDoList,
     List<ToDoList> findByName(@Param("name") String name);
 
     /**
-     * Find by description
+     * Find by description.
      * @param description description of the todo-list
      * @return to do lists
      */
