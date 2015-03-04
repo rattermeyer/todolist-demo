@@ -75,31 +75,13 @@
                 <configuration>
                   <generateBackupPoms>false</generateBackupPoms>
                   <newVersion>
-                    ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${env.BUILD_NUMBER}-${env.GIT_COMMIT}
+                    ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${buildNumber}
                   </newVersion>
                 </configuration>
               </execution>
             </executions>
           </plugin>
           <!-- Write a properties file including the current version number -->
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>properties-maven-plugin</artifactId>
-            <version>1.0-alpha-2</version>
-            <executions>
-              <execution>
-                <phase>generate-resources</phase>
-                <goals>
-                  <goal>write-project-properties</goal>
-                </goals>
-                <configuration>
-                  <outputFile>
-                    ${project.build.directory}/app.properties
-                  </outputFile>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-antrun-plugin</artifactId>
@@ -112,18 +94,12 @@
                 <configuration>
                   <tasks>
                     <mkdir dir="${project.basedir}/target"/>
-                    <!--
-                                        <property name="newVersion" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}${story-tag}${env.BUILD_NUMBER}-${env.SVN_REVISION}"/>
-                                                  -->
                     <property name="newVersion" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${buildNumber}"/>
-<!--
                     <echo message="Writing project Version into ${project.basedir}/target/projectversion.properties: ${newVersion}"/>
                     <echo file="${project.basedir}/target/projectversion.properties" message="projectversion=${newVersion}${line.separator}"/>
-                    <echo file="${project.basedir}/target/projectversion.properties" message="projectversion2=${newVersion2}${line.separator}"/>
                     <echo file="${project.basedir}/target/projectversion.properties" message="groupId=${project.groupId}${line.separator}" append="true"/>
                     <echo file="${project.basedir}/target/projectversion.properties" message="artifactId=${project.artifactId}${line.separator}" append="true"/>
                     <echo file="${project.basedir}/target/projectversion.properties" message="buildNumber=${buildNumber}${line.separator}" append="true"/>
--->
                   </tasks>
                 </configuration>
               </execution>
