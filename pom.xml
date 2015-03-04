@@ -62,7 +62,6 @@
               </execution>
             </executions>
           </plugin>
-<!--
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>versions-maven-plugin</artifactId>
@@ -82,7 +81,6 @@
               </execution>
             </executions>
           </plugin>
--->
           <!-- Write a properties file including the current version number -->
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
