@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.devopsarchitect.demo</groupId>
   <artifactId>todo-list-backend</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1-cf7f8</version>
   <packaging>jar</packaging>
   <name>todo-list-backend</name>
   <parent>
@@ -21,7 +21,7 @@
       <id>demo-repo-candidates</id>
       <name>Demo Repository for Candidate Builds</name>
       <!-- repos is the name undeer which the jenkins server is linked to the repos container -->
-      <url>http://jenkinsci_nexus.dev.docker:8081/nexus/content/repositories/candidates</url>
+      <url>http://maven-repo:8081/nexus/content/repositories/candidates</url>
     </repository>
   </distributionManagement>
   <scm>
